@@ -1,5 +1,7 @@
+import { isVisible } from "@testing-library/user-event/dist/utils"
 import { Component } from "react"
 import BubbleAlert from './BubbleAlert'
+import Cardetail from './Cardetail'
 
 const style = {
    car: {
@@ -19,7 +21,7 @@ const style = {
 
 class Car extends Component {
    render() {
-      const {car} = this.props
+      const {car, isCarVisible, viewCar} = this.props
       const cantidad = car.reduce((acc, el) => acc + el.cantidad, 0)
       return(
          <div>
@@ -27,9 +29,10 @@ class Car extends Component {
             {cantidad != 0 ? <BubbleAlert value={cantidad}/> : null}
             {/* Esto es un Render Condicional */}
             </span>
-            <button style={style.car}>
+            <button onClick={viewCar} style={style.car}>
                Carro
             </button>
+            {isCarVisible ? <Cardetail car={car}/> : null}
          </div>
       )
    }
