@@ -39,7 +39,11 @@ class Cardetail extends Component{
       return(
          <div style={style.cardetail}>
             <ul style={style.list}>
-               {car.map(x => <li style={style.productCar} key={x.name}> <img alt={x.name} src={x.img} width='60' height='40' /> {x.name} <span style={style.pCantidad}>{x.cantidad}</span></li>)}
+               {car.map(x => <li style={style.productCar} key={x.name}>
+                  <img alt={x.name} src={x.img} width='60' height='40' />
+                  {x.name}
+                  <span style={style.pCantidad}>{x.cantidad}</span>
+               </li>)}
             </ul>
          </div>
       )

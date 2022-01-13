@@ -12,6 +12,7 @@ class App extends Component {
       {name: 'Lechuga', price: 500, img: '/products/lechuga.jpg'},
     ],
     car: [],
+    isCarVisible: false,
   }
   agregarAlCarro = (product) => {
 
@@ -29,10 +30,17 @@ class App extends Component {
     })
   }
 
+  viewCar = () => {
+    if(!this.state.car.length){
+      return
+    }
+    this.setState({isCarVisible: !this.state.isCarVisible})
+  }
+
   render() {
     return (
       <div>
-        <Navbar car={this.state.car}/>
+        <Navbar isCarVisible={this.state.isCarVisible} viewCar={this.viewCar} car={this.state.car}/>
         <Layout>
           <Title />
             <Products
